@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include "Wartortle.h"
-#include "Charizard.h"
+#include "Blastoise.h"
 
 //Constructor
 
@@ -43,9 +43,9 @@ Pokemon* Wartortle::actionMenu(Pokemon& opponent) {
 		}
 		else {
 			std::cout << "======================================================================\n" <<
-				"In a sudden swirl of light, " << name << " has evolved to Charizard!\n" <<
+				"In a sudden swirl of light, " << name << " has evolved to Blastoise!\n" <<
 				"======================================================================" << std::endl;
-			return new Charizard();
+			return new Blastoise();
 		}
 	}
 	else {
