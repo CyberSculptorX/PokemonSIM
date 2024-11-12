@@ -5,7 +5,7 @@
 
 //Constructor
 
-Ivysaur::Ivysaur() : Charmander() {
+Ivysaur::Ivysaur() : Bulbasaur() {
 	name = "Ivysaur";
 	strength += 10;
 	health += 100;
