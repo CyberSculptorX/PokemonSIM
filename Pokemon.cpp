@@ -4,7 +4,7 @@
 #include <iostream>
 #include "Pokemon.h"
 
- //Constructor
+//Constructor
 Pokemon::Pokemon(std::string n, std::string t, int h, int s) {
 	name = n;
 	type = t;
@@ -12,7 +12,7 @@ Pokemon::Pokemon(std::string n, std::string t, int h, int s) {
 	strength = s;
 	max_health = health;
 	experience = 0;
-	
+	std::cout << name << " clambers to his feet." << std::endl;
 }
 
 //Methods
@@ -24,7 +24,7 @@ Pokemon::Pokemon(std::string n, std::string t, int h, int s) {
 Pokemon* Pokemon::actionMenu(Pokemon& opponent) {
 	int choice;
 	std::cout << name << ", select an action" << std::endl;
-	std::cout << "   1. Attack\n   2.Heal\n   3.Run Away" << std::endl;
+	std::cout << "   1.Attack\n   2.Heal\n   3.Run Away" << std::endl;
 	std::cin >> choice;
 
 	if (choice == 1) {
@@ -69,6 +69,10 @@ int Pokemon::calculateDamage(Pokemon& opponent, int damage) {
 			//Grass is strong against water so multiply the damage to the water type.
 			return damage * 2;
 		}
+		else if (opponent.type == "Electric") {
+			//Grass is weak against electric so damage the grass type.
+			return damage / 2;
+		}
 	}
 	if (type == "Water") {
 		if (opponent.type == "Fire") {
@@ -77,6 +81,10 @@ int Pokemon::calculateDamage(Pokemon& opponent, int damage) {
 		}
 		else if (opponent.type == "Grass") {
 			//Water is weak to grass so half the damage
+			return damage / 2;
+		}
+		else if (opponent.type == "Electric") {
+			//Grass is weak against electric so damage the grass type.
 			return damage / 2;
 		}
 	}
@@ -88,6 +96,24 @@ int Pokemon::calculateDamage(Pokemon& opponent, int damage) {
 		else if (opponent.type == "Grass") {
 			//Fire is strong against grass so double the damage
 			return damage * 2;
+		}
+		else if (opponent.type == "Electric") {
+			//Grass is weak against electric so damage the grass type.
+			return damage / 2;
+		}
+	}
+	if (type == "Electric") {
+		if (opponent.type == "Water") {
+			//Electric is weak to water, so half the damage
+			return damage / 2;
+		}
+		else if (opponent.type == "Grass") {
+			//Electric is strong against grass so double the damage
+			return damage * 2;
+		}
+		else if (opponent.type == "Fire") {
+			//Electric is weak against electric so damage the grass type.
+			return damage / 2;
 		}
 	}
 
@@ -102,7 +128,7 @@ int Pokemon::calculateDamage(Pokemon& opponent, int damage) {
 void Pokemon::heal(int amount) {
 	std::cout << "You heal " << name << "." << std::endl;
 	health += amount;
-	if (health > max_health) {
+	if (health > max_health){
 		health = max_health;
 		std::cout << name << " is fully healed!" << std::endl;
 	}
